@@ -1,3 +1,4 @@
+# Deployment for service A
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -18,6 +19,7 @@ spec:
         ports:
         - containerPort: 8080
 ---
+# Deployment for service B
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -38,6 +40,7 @@ spec:
         ports:
         - containerPort: 80
 ---
+# ServiceA
 apiVersion: v1
 kind: Service
 metadata:
@@ -53,6 +56,7 @@ spec:
   selector:
     run: service-a
 ---
+# ServiceB
 apiVersion: v1
 kind: Service
 metadata:
@@ -68,6 +72,7 @@ spec:
   selector:
     run: service-b
 ---
+# Ingress
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:

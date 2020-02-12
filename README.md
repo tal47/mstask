@@ -1,21 +1,21 @@
 # Home exercise
 ## Prerequisite:
-Install Helm.
+- Install Helm
 
 ## Configure Ingress Controller
 ### Create a namespace for ingress resources
 ```sh
-kubectl create namespace ingress-basic
+$ kubectl create namespace ingress-basic
 ```
 
 ### Add the official stable repository
 ```sh
-helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+$ helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 ```
 
 ### Use Helm to deploy an NGINX ingress controller
 ```sh
-helm install nginx-ingress stable/nginx-ingress \
+$ helm install nginx-ingress stable/nginx-ingress \
     --namespace ingress-basic \
     --set controller.replicaCount=2 \
     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
@@ -24,7 +24,7 @@ helm install nginx-ingress stable/nginx-ingress \
 
 ### Get external IP using:
 ```sh
-kubectl get service -l app=nginx-ingress --namespace ingress-basic
+$ kubectl get service -l app=nginx-ingress --namespace ingress-basic
 ```
 
 ## Docker handling (only if needed)
